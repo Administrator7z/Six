@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://dubbo.apache.org/schema/dubbo
+        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="node-shop-web"/>
+    <dubbo:reference interface="com.bjpowernode.service.MyOrderService"
+                     id="remoteOrderService"
+                     registry="N/A"
+                     url="dubbo://localhost:20881"/>
+    <dubbo:reference interface="com.bjpowernode.service.MyUserService"
+                     id="remoteUserService"
+                     registry="N/A"
+                     url="dubbo://localhost:20882"/>
+
+    <bean id="sendService" class="com.bjpowernode.service.SendMessage" />
+
+    <!--声明shopService-->
+    <bean id="shopService" class="com.bjpowernode.service.ShopService">
+        <property name="orderService" ref="remoteOrderService" />
+        <property name="sendMessage" ref="sendService" />
+        <property name="userService" ref="remoteUserService" />
+    </bean>
+
+
+</beans>
