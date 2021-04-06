@@ -1,0 +1,8 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /myboot
+school:
+  name: 动力节点-java培训
+  site: http://www.bjpowernode.com
+  address: 大兴区凉水河二街

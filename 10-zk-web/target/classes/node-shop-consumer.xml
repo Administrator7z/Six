@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://dubbo.apache.org/schema/dubbo
+        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--声明服务名称-->
+    <dubbo:application name="zk-web" />
+
+    <!--声明注册中心zookeeper-->
+    <dubbo:registry address="zookeeper://192.168.17.129:2181" />
+
+    <!--声明引用远程服务
+        check:默认是true ，表示消费启动时要检查提供者必须运行
+              false：不检查
+    -->
+    <dubbo:reference interface="com.bjpowernode.service.MyOrderService"
+                     id="remoteOrderService" check="false"/>
+
+    <dubbo:reference interface="com.bjpowernode.service.MyUserService"
+                     id="remoteUserService" check="false"/>
+
+    <bean id="sendService" class="com.bjpowernoe.service.SendMessage" />
+
+    <!--声明shopService-->
+    <bean id="shopService" class="com.bjpowernoe.service.ShopService">
+        <property name="orderService" ref="remoteOrderService" />
+        <property name="sendMessage" ref="sendService" />
+        <property name="userService" ref="remoteUserService" />
+    </bean>
+
+</beans>

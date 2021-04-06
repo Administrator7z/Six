@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://dubbo.apache.org/schema/dubbo
+        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="use-menu" />
+
+    <dubbo:registry address="zookeeper://localhost:2181" />
+
+    <!--声明引用 file
+        提供者有version， 消费者必须使用和提供者一样的version
+    -->
+    <dubbo:reference interface="com.bjpowernode.service.MenuService"
+                     id="fileService" version="1.0" />
+
+    <!--声明引用 edit-->
+    <dubbo:reference interface="com.bjpowernode.service.MenuService"
+                     id="editService" version="2.0" />
+
+    <bean id="showService" class="com.bjpowernode.service.ShowMenuService">
+        <property name="file" ref="fileService" />
+        <property name="edit" ref="editService" />
+    </bean>
+</beans>

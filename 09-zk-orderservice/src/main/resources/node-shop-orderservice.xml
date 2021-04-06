@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://dubbo.apache.org/schema/dubbo
+        http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <!--声明服务名称-->
+    <dubbo:application name="zk-orderservice" />
+
+    <!--声明协议和端口-->
+    <dubbo:protocol name="dubbo" port="20881" />
+
+    <!--声明注册中心-->
+    <dubbo:registry address="zookeeper://192.168.17.129:2181" />
+
+    <!--暴露服务-->
+    <dubbo:service interface="com.bjpowernode.service.MyOrderService"
+                   ref="myOrderServiceBean" retries="2"/>
+
+  <!--  <dubbo:service interface="com.bjpowernode.service.MyOrderService2"
+                   ref="myOrderServiceBean" />
+
+    <dubbo:service interface="com.bjpowernode.service.MyOrderService3"
+                   ref="myOrderServiceBean" timeout="5000" />
+-->
+    <!--设置提供者的默认值-->
+    <dubbo:provider retries="0" timeout="3000"/>
+
+    <!--声明bean对象-->
+    <bean id="myOrderServiceBean" class="com.bjpowernode.service.impl.MyOrderServiceImpl" />
+</beans>

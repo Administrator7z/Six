@@ -1,0 +1,4 @@
+#指定激活哪个文件
+spring:
+  profiles:
+    active: test
