@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjpowernode.dao.StudentMapper">
+
+    <resultMap id="studentMap" type="com.bjpowernode.model.Student">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="age" property="age" />
+    </resultMap>
+
+    <select id="selectById" resultMap="studentMap" >
+        select id,name,age from student where id=#{stuId}
+    </select>
+
+    <select id="selectStudents" resultMap="studentMap">
+        select id,name,age from student order by id
+    </select>
+</mapper>

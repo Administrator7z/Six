@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div th:style="'margin-left: 350px'">
+        <h3>内置对象</h3>
+        <p>#request</p>
+        <p th:text="${#request.getAttribute('myname')}">获取reques作用域中的数据</p>
+        <p th:text="${#request.getAttribute('myclass')}">获取reques作用域中的数据</p>
+        <p th:text="${#request.getCharacterEncoding()}"></p>
+        <p th:text="${#request.getContentType()}"></p>
+        <p th:text="${#request.getServerName()}"></p>
+        <p th:text="${#request.getServerPort()}"></p>
+        <p> 请求的地址和参数</p>
+        <p th:text="${#request.getRequestURL()}">请求的url地址</p>
+        <p th:text="${#request.getQueryString()}">请求参数</p>
+
+        <br/>
+        <br/>
+        <h3>#session</h3>
+        <p th:text="${#session.getAttribute('mysess')}"></p>
+        <p th:text="${#session.getId()}"></p>
+
+        <h3>session</h3>
+        <p th:text="${session.mysess}"></p>
+
+        <script type="text/javascript" th:inline="javascript">
+            var url = [[${#request.getRequestURL()}]];
+            var query = [[${#request.getQueryString()}]]
+            //alert("url="+url+"==========="+query);
+        </script>
+    </div>
+
+</body>
+</html>

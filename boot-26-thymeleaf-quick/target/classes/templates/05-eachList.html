@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div th:style="'margin-left: 350px'">
+       <h3>each循环List《String》</h3>
+        <p th:each="str:${strList}">
+            <span th:text="${strStat.index}">第几个</span>
+            <span th:text="${str}">集合成员</span>
+        </p>
+
+        <br>
+        <br/>
+        <!--<div th:each="user, ust:${userList}">
+            <p th:text="${user.id}"/>
+            <p th:text="${user.name}"/>
+            <p th:text="${user.sex}"/>
+            <p th:text="${user.age}"/>
+        </div>-->
+
+        <table>
+            <tr>
+                <td>顺序</td>
+                <td>序号</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>是第一行吗</td>
+                <td>是最后一行吗</td>
+                <td>使用current</td>
+            </tr>
+            <tr th:each="u:${userList}">
+                <td th:text="${uStat.count}+'/'+${uStat.size}"></td>
+                <td th:text="${u.id}"></td>
+                <td th:text="${u.name}"></td>
+                <td th:text="${u.getSex()}"></td>
+                <td th:text="${u.age}"></td>
+                <td th:text="${uStat.first}"></td>
+                <td th:text="${uStat.last}"></td>
+                <td th:text="${uStat.current.name}"></td>
+            </tr>
+
+        </table>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#指定服务名称
+spring:
+  application:
+    name: service-provider
+#dubbo配置
+dubbo:
+  #注册中心
+  registry:
+    address: zookeeper://localhost:2181
+  #设置扫描包
+  scan:
+    base-packages: com.bjpowernode.service
+  #设置协议
+  protocol:
+    name: dubbo
+    port: 20880
+  #提供者默认值，例如timeout
+  provider:
+    timeout: 5000

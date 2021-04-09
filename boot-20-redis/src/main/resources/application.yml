@@ -1,0 +1,12 @@
+server:
+  servlet:
+    context-path: /myredis
+#设置redis
+spring:
+  redis:
+    #redis 服务器的ip
+    host: localhost
+    #redis 端口号
+    port: 6380
+    #redis密码
+    #password: 123456

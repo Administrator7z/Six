@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div th:style="'margin-left: 350px'">
+        <p>包含common/menu.html</p>
+        <div th:insert="common/menu :: html"></div>
+
+
+        <h3>使用模板</h3>
+        <p>插入模板 ~{}</p>
+        <p th:insert="~{header :: top}">
+            我想使用top的内容
+        </p>
+        <br/>
+        <p>插入模板 {}</p>
+        <div th:insert="header :: top"></div>
+
+        <br/>
+        <br/>
+        <p>包含</p>
+        <p th:include="~{header :: top}">
+        <p th:include="header :: top" >
+        </p>
+        <br/>
+        <p>包含整个文件</p>
+        <div th:insert="footer :: html"></div>
+        <div th:insert="footer"></div>
+    </div>
+
+</body>
+</html>

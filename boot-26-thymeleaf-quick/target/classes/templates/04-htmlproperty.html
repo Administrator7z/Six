@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/js/jquery-3.4.1.js}"></script>
+    <script type="text/javascript" >
+          function  fun() {
+            alert("单击操作")
+          }
+    </script>
+</head>
+<body>
+    <div th:style="'margin-left: 350px'">
+        <h3>html属性</h3>
+        <form th:action="@{/login}" th:method="${method}">
+            <input type="text" th:id="username" th:value="${myname}">
+            <input type="button" th:value="单击" th:onclick="fun()">
+        </form>
+    </div>
+</body>
+</html>

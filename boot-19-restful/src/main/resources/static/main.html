@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试put请求</title>
+</head>
+<body>
+
+   <h3>测试put请求（ajax同理）</h3>
+   <form action="student/1005/lifeifei" method="post">
+       <!--请求参数中，加入一个隐含的参数 _method='真实的请求方式'-->
+       <input type="hidden" name="_method" value="put">
+       <input type="submit" value="测试put请求">
+   </form>
+
+   <script type="text/javascript">
+       $.ajax({
+           url:"student/1001/lisi",
+           type:"post",
+           data:{
+               "_method":"put"
+           },
+           success:function(resp){
+               //
+           }
+       })
+   </script>
+</body>
+</html>

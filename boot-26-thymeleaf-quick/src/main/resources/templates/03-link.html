@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>链接表达式</title>
+</head>
+<body>
+    <div style="margin-left: 350px">
+        <h3>链接表达式</h3>
+        <p>链接到绝对地址</p>
+        <a th:href="@{http://www.baidu.com}">链接到百度</a>
+        <br>
+        <p>链接到相对地址</p>
+        <a th:href="@{/query/student}">链接到query/student</a>
+        <br/>
+        <p>链接到相对地址，传递参数0</p>
+        <a th:href="@{'/query/student?id=1005'}">链接到query/student?id=1005</a>
+        <p>在链接表达式中，使用变量表达式</p>
+        <p>链接到相对地址，传递参数1</p>
+        <a th:href="@{'/query/student?id='+${stuId}}">链接到query/student?id=${stuId}</a>
+        <p>使用模板中传递参数的方式</p>
+        <p>链接到相对地址，传递参数2:    地址(参数名=值)</p>
+        <a th:href="@{/query/student(id=${stuId})}">链接到query/student推荐传递参数</a>
+
+        <p>链接到相对地址，传递参数3:    地址(参数名=值,参数N=值N)</p>
+        <a th:href="@{/find/school(id=${stuId},name='lisi')}">链接到find/school推荐传递参数</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+#指定服务名称
+spring:
+  application:
+    name: studentservice-consumer
+
+dubbo:
+  #注册中心
+  registry:
+    address: zookeeper://localhost:2181
+  #配置消费者的默认值
+  consumer:
+    check: false
+    retries: 0
+  #扫描包
+  scan:
+    base-packages: com.bjpowernode

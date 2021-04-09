@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div th:style="'margin-left: 350px'">
+        <h3>内置工具类</h3>
+        <p>#dates</p>
+        <p th:text="${#dates.format(mydate,'yyyy-MM-dd HH:mm:ss')}"></p>
+        <p th:text="${#dates.format(mydate)}" ></p>
+        <p th:text="${#dates.day(mydate)}" />
+        <p th:text="${#dates.year(mydate)}" />
+        <p th:text="${#dates.createNow()}" />
+        <br>
+        <p>#numbers</p>
+        <p th:text="${#numbers.formatCurrency(mynum)}">格式成货币格式</p>
+        <p th:text="${#numbers.formatDecimal(mynum,5,2)}" />
+
+        <br/>
+        <p>#strings</p>
+        <p th:text="${mystr}"></p>
+        <p th:text="${#strings.concat('abc','123')}"></p>
+        <p th:text="${#strings.substring(mystr,2,5)}"/>
+
+        <br/>
+        <p>#lists</p>
+        <p th:text="${#lists.size(strlist)}"></p>
+
+        <br>
+        <p>处理null值</p>
+        <p th:text="${zoo?.cat?.name}"></p>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /myboot
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp

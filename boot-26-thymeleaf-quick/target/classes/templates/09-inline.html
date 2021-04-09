@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div th:style="'margin-left: 350px'">
+      <h3>inline-text</h3>
+      <p th:text="'姓名是是:'+${name}"></p>
+
+      <div th:inline="text">
+          <span> 姓名是： [[${name}]]   </span>
+          <br/>
+          <p> 姓名是：[[${user.name}]],年龄是:[[${user.age}]]</p>
+      </div>
+
+
+      <p>字符串连接</p>
+      <p th:text="'序号是：'+${user.id}+'，姓名是：'+${user.name}+'，年龄是：'+${user.age}"></p>
+      <p>连接字符串2</p>
+      <p th:text="|序号是${user.id}姓名是${user.name},性别是${sex}|"></p>
+
+      <p>三元运算符</p>
+      <p th:text="${sex == 'm' ? '性别是男的':'性别是其他的'}"></p>
+      <p th:text="${isLogin ? ( sex=='m' ? '登录的是男的':'登录的是女的') : '没有登录'}"></p>
+
+    </div>
+
+<script type="text/javascript" th:inline="javascript">
+    // 内联脚本： 在js代码中，使用模板中的数据
+    var  name = [[${name}]];
+    var age = [[${user.age}]];
+    alert("name="+name+",age="+age);
+
+</script>
+</body>
+</html>
